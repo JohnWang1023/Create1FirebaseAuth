@@ -152,10 +152,10 @@
       firebase.auth().currentUser.updateProfile({
         displayName: newUsername,
       }).then(function() {
-        alert("Profile updated successfully!");
+        tellAppInventor("Username updated successfully!");
         var displayName = firebase.auth().currentUser.displayName;
       }, function(error) {
-        alert("An error happened.")
+        tellAppInventor("An error happened while updating username.")
       });
     }
     /**
