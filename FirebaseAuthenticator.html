@@ -168,6 +168,10 @@
         // [END_EXCLUDE]
         if (user) {
           // User is signed in.
+          var username = document.getElementById('username').value;
+          if (username.length > 1) {
+              changeUsername();
+            };
           var displayName = user.displayName;
           var email = user.email;
           var emailVerified = user.emailVerified;
@@ -175,10 +179,6 @@
           var isAnonymous = user.isAnonymous;
           var uid = user.uid;
           var providerData = user.providerData;
-          var username = document.getElementById('username').value;
-          if (username.length > 1) {
-              changeUsername();
-            };
           if (emailVerified && !isAnonymous) {
                 tellAppInventor( uid + ',' + email + ',' + displayName + ',' + photoURL );
             } else if (!emailVerified) {
