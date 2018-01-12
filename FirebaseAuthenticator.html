@@ -173,11 +173,6 @@
         // [END_EXCLUDE]
         if (user) {
           // User is signed in.
-          var username = document.getElementById('username').value;
-          if (username.length > 1) {
-              changeUsername();
-              return;
-            };
           var displayName = user.displayName;
           var email = user.email;
           var emailVerified = user.emailVerified;
@@ -196,6 +191,11 @@
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
           document.getElementById('quickstart-sign-in').textContent = 'Sign out';
           document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+          var username = document.getElementById('username').value;
+          if (username.length > 1) {
+              changeUsername();
+              return;
+            };
           if (!emailVerified) {
             document.getElementById('quickstart-verify-email').disabled = false;
           }
