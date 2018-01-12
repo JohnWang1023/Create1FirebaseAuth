@@ -144,6 +144,18 @@
       });
       // [END sendpasswordemail];
     }
+    
+    function changeUsername(){
+      var newUsername = document.getElementById('new-username').value
+      user.updateProfile({
+        displayName: newUsername,
+      }).then(function() {
+        alert("Profile updated successfully!");
+        var displayName = user.displayName;
+      }, function(error) {
+        alert("An error happened.")
+      });
+    }
     /**
      * initApp handles setting up UI event listeners and registering Firebase auth listeners:
      *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
@@ -197,6 +209,7 @@
       document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
       document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
       document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+      document.getElementById('quickstart-username-change').addEventListener('click', changeUsername, false);
     }
     window.onload = function() {
       initApp();
@@ -235,7 +248,7 @@
             <div>Authorization <code>currentUser</code> object value:</div>
             <pre><code id="quickstart-account-details">null</code></pre>
            <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="new-username" name="new-username" placeholder="New Username"/>
-           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-username-change" name="change-username" onclick="user.updateProfile({displayName: document.getElementById("new-username").value}).then(function(){ var displayName = user.displayName;alert("success"},function(error){alert("Error")});">Change Username</button>
+           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-username-change" name="change-username">Change Username</button>
           </div>
         </div>
       </div>
