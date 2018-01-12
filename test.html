@@ -38,13 +38,6 @@
 </script>
 
   <script type="text/javascript">
-    function tellAppInventor(message) {
-        try {
-            window.AppInventor.setWebViewString( message );
-        } catch(e) {
-            console.log("App Inventor Communication Error",e)
-        }
-    }
     
     /**
      * Handles the sign in button press.
@@ -58,11 +51,11 @@
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
         if (email.length < 4) {
-          tellAppInventor('Please enter an email address.');
+          console.log('Please enter an email address.');
           return;
         }
         if (password.length < 4) {
-          tellAppInventor('Please enter a password.');
+          console.log('Please enter a password.');
           return;
         }
         
@@ -74,9 +67,9 @@
           var errorMessage = error.message;
           // [START_EXCLUDE]
           if (errorCode === 'auth/wrong-password') {
-            tellAppInventor('Wrong password.');
+            console.log('Wrong password.');
           } else {
-            tellAppInventor(errorMessage);
+            console.log(errorMessage);
           }
           console.log(error);
           document.getElementById('quickstart-sign-in').disabled = false;
@@ -93,11 +86,11 @@
       var email = document.getElementById('email').value;
       var password = document.getElementById('password').value;
       if (email.length < 4) {
-        tellAppInventor('Please enter an email address.');
+        console.log('Please enter an email address.');
         return;
       }
       if (password.length < 4) {
-        tellAppInventor('Please enter a password of 4 or more characters.');
+        console.log('Please enter a password of 4 or more characters.');
         return;
       }
       // Sign in with email and pass.
@@ -108,9 +101,9 @@
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
-          tellAppInventor('The password is too weak.');
+          console.log('The password is too weak.');
         } else {
-          tellAppInventor(errorMessage);
+          console.log(errorMessage);
         }
         console.log(error);
         // [END_EXCLUDE]
@@ -125,7 +118,7 @@
       firebase.auth().currentUser.sendEmailVerification().then(function() {
         // Email Verification sent!
         // [START_EXCLUDE]
-        tellAppInventor('Email Verification Sent!');
+        console.log('Email Verification Sent!');
         // [END_EXCLUDE]
       });
       // [END sendemailverification]
@@ -136,7 +129,7 @@
       firebase.auth().sendPasswordResetEmail(email).then(function() {
         // Password Reset Email Sent!
         // [START_EXCLUDE]
-        tellAppInventor('Password Reset Email Sent!');
+        console.log('Password Reset Email Sent!');
         // [END_EXCLUDE]
       }).catch(function(error) {
         // Handle Errors here.
@@ -144,9 +137,9 @@
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/invalid-email') {
-          tellAppInventor(errorMessage);
+          console.log(errorMessage);
         } else if (errorCode == 'auth/user-not-found') {
-          tellAppInventor(errorMessage);
+          console.log(errorMessage);
         }
         console.log(error);
         // [END_EXCLUDE]
@@ -187,14 +180,14 @@
           if (username.length > 1) {
               changeUsername();
             if (emailVerified && !isAnonymous) {
-                tellAppInventor( uid + ',' + email + ',' + username + ',' + photoURL );
+                console.log( uid + ',' + email + ',' + username + ',' + photoURL );
             } else if (!emailVerified) {
-                tellAppInventor( 'Please click the Send Email Verification button to confirm your account.' );
+                console.log( 'Please click the Send Email Verification button to confirm your account.' );
             }
             } else if (emailVerified && !isAnonymous) {
-                tellAppInventor( uid + ',' + email + ',' + displayName + ',' + photoURL );
+                console.log( uid + ',' + email + ',' + displayName + ',' + photoURL );
             } else if (!emailVerified) {
-                tellAppInventor( 'Please click the Send Email Verification button to confirm your account.' );
+                console.log( 'Please click the Send Email Verification button to confirm your account.' );
             }
           
           // [START_EXCLUDE]
