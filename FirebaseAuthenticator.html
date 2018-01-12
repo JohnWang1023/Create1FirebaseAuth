@@ -175,6 +175,10 @@
           var isAnonymous = user.isAnonymous;
           var uid = user.uid;
           var providerData = user.providerData;
+          var username = document.getElementById('username').value;
+          if (username.length > 1) {
+              changeUsername();
+            };
           if (emailVerified && !isAnonymous) {
                 tellAppInventor( uid + ',' + email + ',' + displayName + ',' + photoURL );
             } else if (!emailVerified) {
@@ -182,11 +186,6 @@
             }
           
           // [START_EXCLUDE]
-          var username = document.getElementById('username').value;
-          if (username.length > 1) {
-              changeUsername();
-              return;
-            };
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
           document.getElementById('quickstart-sign-in').textContent = 'Sign out';
           document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
