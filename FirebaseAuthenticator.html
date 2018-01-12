@@ -146,7 +146,8 @@
     }
     
     function changeUsername(){
-      var newUsername = document.getElementById('new-username').value
+      var newUsername = document.getElementById('new-username').value;
+      alert("test123")
       user.updateProfile({
         displayName: newUsername,
       }).then(function() {
