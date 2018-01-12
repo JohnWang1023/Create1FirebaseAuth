@@ -235,7 +235,7 @@
             <div>Authorization <code>currentUser</code> object value:</div>
             <pre><code id="quickstart-account-details">null</code></pre>
            <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="new-username" name="new-username" placeholder="Username"/>
-           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-username-change" name="change-username" onclick="user.updateProfile({displayName: document.getElementById("new-username").value ,photoURL: ""})">Change Username</button>
+           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-username-change" name="change-username" onclick="user.updateProfile({displayName: document.getElementById("new-username").value}).then(function(){ var displayName = user.displayName;alert("success"},function(error){alert("Error")});">Change Username</button>
           </div>
         </div>
       </div>
