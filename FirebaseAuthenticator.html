@@ -148,11 +148,11 @@
     function changeUsername(){
       var newUsername = document.getElementById('new-username').value;
       alert("test123")
-      user.updateProfile({
+      firebase.auth().currentUser.updateProfile({
         displayName: newUsername,
       }).then(function() {
         alert("Profile updated successfully!");
-        var displayName = user.displayName;
+        var displayName = firebase.auth().currentUser.displayName;
       }, function(error) {
         alert("An error happened.")
       });
