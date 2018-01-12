@@ -57,6 +57,7 @@
           tellAppInventor('Please enter a password.');
           return;
         }
+        
         // Sign in with email and pass.
         // [START authwithemail]
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -76,6 +77,11 @@
         // [END authwithemail]
       }
       document.getElementById('quickstart-sign-in').disabled = true;
+      var username = document.getElementById('username').value;
+      if (username.length > 1) {
+          changeUsername();
+          return;
+        }
     }
     /**
      * Handles the sign up button press.
@@ -146,7 +152,8 @@
     }
     
     function changeUsername(){
-      var newUsername = document.getElementById('new-username').value;
+      //var newUsername = document.getElementById('new-username').value;
+      var newUsername = document.getElementById('username').value;
       alert("test123")
       firebase.auth().currentUser.updateProfile({
         displayName: newUsername,
@@ -166,11 +173,17 @@
       // Listening for auth state changes.
       // [START authstatelistener]
       firebase.auth().onAuthStateChanged(function(user) {
+        
         // [START_EXCLUDE silent]
         document.getElementById('quickstart-verify-email').disabled = true;
         // [END_EXCLUDE]
         if (user) {
           // User is signed in.
+          var username = document.getElementById('username').value;
+          if (username.length > 1) {
+              changeUsername();
+              return;
+            }
           var displayName = user.displayName;
           var email = user.email;
           var emailVerified = user.emailVerified;
@@ -231,7 +244,10 @@
           <p>Enter an email and password below and either sign in to an existing account or sign up</p>
 
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
-          <p/><p/>
+          <p/>
+          <p>To change username type your new username below, else leave it empty.</p>
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="username" name="username" placeholder="Username"/>
+          <p/>
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
           <p/>
           <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
