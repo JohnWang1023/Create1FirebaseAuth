@@ -77,7 +77,6 @@
         // [END authwithemail]
       }
       document.getElementById('quickstart-sign-in').disabled = true;
-
     }
     /**
      * Handles the sign up button press.
@@ -150,7 +149,6 @@
     function changeUsername(){
       //var newUsername = document.getElementById('new-username').value;
       var newUsername = document.getElementById('username').value;
-      alert("test123")
       firebase.auth().currentUser.updateProfile({
         displayName: newUsername,
       }).then(function() {
