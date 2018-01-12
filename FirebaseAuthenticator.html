@@ -5,19 +5,28 @@
   <title>Email/Password Authentication Example</title>
 
   <!-- Material Design Theming -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-  <script>
-  // Initialize Firebase
   
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-84024113-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-84024113-3');
+</script>
+
+  
+  <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+<script>
   // Get the Firebase configuration from App Inventor via the WebViewer.WebViewString property
   var config = JSON.parse(window.AppInventor.getWebViewString());
-  
-  firebase.initializeApp(config);
+  firebase.initializeApp(config);// Initialize Firebase
 </script>
 
   <script type="text/javascript">
@@ -164,9 +173,9 @@
             }
           
           // [START_EXCLUDE]
-//          document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-//          document.getElementById('quickstart-sign-in').textContent = 'Sign out';
-//          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
+          document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
+          document.getElementById('quickstart-sign-in').textContent = 'Sign out';
+          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
           if (!emailVerified) {
             document.getElementById('quickstart-verify-email').disabled = false;
           }
@@ -174,9 +183,9 @@
         } else {
           // User is signed out.
           // [START_EXCLUDE]
-//          document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-//          document.getElementById('quickstart-sign-in').textContent = 'Sign in';
-//          document.getElementById('quickstart-account-details').textContent = 'null';
+          document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+          document.getElementById('quickstart-sign-in').textContent = 'Sign in';
+          document.getElementById('quickstart-account-details').textContent = 'null';
           // [END_EXCLUDE]
         }
         // [START_EXCLUDE silent]
@@ -196,17 +205,6 @@
 </head>
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
-  <!-- Header section containing title 
-  <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-      <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop">
-        <a href="/"><h3>Firebase Authentication</h3></a>
-      </div>
-    </div>
-  </header>
-  -->
-
   <main class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
 
@@ -232,10 +230,12 @@
           <p/>
 
           <!-- Container where we'll display the user details -->
-          <div class="quickstart-user-details-container" style="display:none">
+          <div class="quickstart-user-details-container" > <!--style="display:none">-->
             Sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
             <div>Authorization <code>currentUser</code> object value:</div>
             <pre><code id="quickstart-account-details">null</code></pre>
+           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="new-username" name="new-username" placeholder="Username"/>
+           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-username-change" name="change-username" onclick="user.updateProfile({displayName: document.getElementById("new-username").value ,photoURL: ""})">Change Username</button>
           </div>
         </div>
       </div>
