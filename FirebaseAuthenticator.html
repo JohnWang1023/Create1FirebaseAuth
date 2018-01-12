@@ -25,7 +25,15 @@
 <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
 <script>
   // Get the Firebase configuration from App Inventor via the WebViewer.WebViewString property
-  var config = JSON.parse({ "apiKey":"AIzaSyCgj1B2GWPLQBHF8yXyYe0alKBCPCAxxS0", "databaseURL":"https://apcsp-create1.firebaseio.com", "storageBucket":"apcsp-create1.appspot.com", "messagingSenderId":"994089617386" });//window.AppInventor.getWebViewString());
+  //var config = JSON.parse(window.AppInventor.getWebViewString());
+   var config = {
+    apiKey: "AIzaSyCgj1B2GWPLQBHF8yXyYe0alKBCPCAxxS0",
+    authDomain: "apcsp-create1.firebaseapp.com",
+    databaseURL: "https://apcsp-create1.firebaseio.com",
+    projectId: "apcsp-create1",
+    storageBucket: "apcsp-create1.appspot.com",
+    messagingSenderId: "994089617386"
+  };
   firebase.initializeApp(config);// Initialize Firebase
 </script>
 
